@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Prague atelier — warm ivory, walnut bronze, architectural warmth */
+    --background: 36 20% 96%;
+    --foreground: 22 12% 11%;
+
+    --primary: 26 28% 38%;
+    --primary-foreground: 36 20% 96%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 22 12% 11%;
+
+    --secondary: 36 16% 92%;
+    --secondary-foreground: 22 10% 24%;
+
+    --muted: 36 12% 93%;
+    --muted-foreground: 22 8% 48%;
+
+    --border: 36 14% 87%;
+    --input: 36 10% 91%;
+    --ring: 26 28% 38%;
+
+    --header-height: 72px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.12);
+  }
+
+  *:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .label-eyebrow {
+    @apply font-body font-medium tracking-[0.1em] uppercase;
+  }
+
+  .section-px {
+    @apply px-5 md:px-10 lg:px-16;
+  }
+
+  .container-max {
+    @apply mx-auto max-w-7xl;
+  }
+}
