@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
 
 const serviceLinks = [
@@ -26,7 +27,7 @@ const areas = [
 
 export default function Footer() {
   return (
-    <footer className="bg-foreground text-background/65" role="contentinfo">
+    <footer id="site-footer" className="bg-foreground text-background/65 pb-16 md:pb-0" role="contentinfo">
       {/* Thin warm accent line */}
       <div className="h-px bg-primary/50" aria-hidden="true" />
 
@@ -35,11 +36,13 @@ export default function Footer() {
           {/* Brand + contact */}
           <div>
             <div className="mb-6">
-              <Logo light={true} size="lg" />
+              <Link href="/" aria-label="Two Bears Renovation – domovská stránka">
+                <Logo light={true} size="lg" />
+              </Link>
             </div>
             <p className="mb-7 max-w-xs font-body text-sm leading-relaxed text-background/50">
-              Rekonstrukce bytů v Praze na klíč. Vlastní tým, pevná cena, jeden
-              kontakt od prvního měření po předání klíčů. Na trhu od roku 2016.
+              Rekonstrukce bytů v Praze na klíč. Odborný tým, pevná cena, jeden
+              kontakt od prvního měření po předání klíčů.
             </p>
             <div className="flex flex-col gap-2.5">
               <a
@@ -56,10 +59,12 @@ export default function Footer() {
                 <MailIcon className="h-3.5 w-3.5 shrink-0 text-background/30" />
                 rekonstrukcebytu888@gmail.com
               </a>
-              <address className="mt-2 font-body text-sm not-italic leading-relaxed text-background/40">
-                Two Bears Renovations s.r.o.<br />
-                Mánesova 12, Praha 2<br />
-                120 00 Praha
+              <address className="mt-2 font-body text-sm not-italic leading-relaxed text-background/65">
+                Two Bears Renovation s.r.o.<br />
+                IČO: 236 84 038<br />
+                Mokropeská č.ev. 574, 252 28 Černošice<br />
+                Zapsáno v OR vedeném Městským soudem v Praze,<br />
+                oddíl C, vložka 431208
               </address>
             </div>
           </div>
@@ -74,7 +79,7 @@ export default function Footer() {
                 <li key={s}>
                   <a
                     href="#sluzby"
-                    className="font-body text-sm text-background/50 transition-colors hover:text-background"
+                    className="font-body text-sm text-background/75 transition-colors hover:text-background"
                   >
                     {s}
                   </a>
@@ -94,7 +99,7 @@ export default function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="font-body text-sm text-background/50 transition-colors hover:text-background"
+                      className="font-body text-sm text-background/75 transition-colors hover:text-background"
                     >
                       {l.label}
                     </a>
@@ -110,7 +115,7 @@ export default function Footer() {
               <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
                 {areas.map((a) => (
                   <li key={a}>
-                    <span className="font-body text-xs text-background/40">{a}</span>
+                    <span className="font-body text-xs text-background/70">{a}</span>
                   </li>
                 ))}
                 <li>
@@ -127,13 +132,13 @@ export default function Footer() {
         <div className="container-max section-px py-5">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-body text-xs text-background/28">
-              © {new Date().getFullYear()} Two Bears Renovations s.r.o. Všechna práva vyhrazena.
+              © {new Date().getFullYear()} Two Bears Renovation s.r.o. Všechna práva vyhrazena.
             </p>
             <div className="flex gap-5">
-              <a href="#" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
+              <a href="/ochrana-osobnich-udaju" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
                 Ochrana osobních údajů
               </a>
-              <a href="#" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
+              <a href="/obchodni-podminky" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
                 Obchodní podmínky
               </a>
             </div>

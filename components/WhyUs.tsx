@@ -1,15 +1,15 @@
 const reasons = [
   {
     num: "01",
-    title: "Vlastní pracovní parta",
+    title: "Ověření řemeslníci, stálý tým",
     description:
-      "Nepracujeme s nahodile sesbíranými subdodavateli. Máme stabilní tým, který u nás pracuje roky — každý ví, co dělá, a bere to osobně.",
+      "Spolupracujeme s prověřenými řemeslníky, kteří se na bytové rekonstrukce specializují. Stálý okruh lidí zajišťuje konzistentní kvalitu na každé zakázce.",
   },
   {
     num: "02",
     title: "Pevná cena, žádná překvapení",
     description:
-      "Cenu stanovíme na základě osobní prohlídky a détailního výkazu prací. Co nabídneme, to zaplatíte — ani korunu víc bez vašeho souhlasu.",
+      "Cenu stanovíme na základě osobní prohlídky a podrobného výkazu prací. Co nabídneme, to zaplatíte — ani korunu víc bez vašeho souhlasu.",
   },
   {
     num: "03",

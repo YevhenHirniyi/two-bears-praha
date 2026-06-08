@@ -10,9 +10,60 @@ const steps = [
   { num: 3, label: "Závěrečné detaily" },
 ];
 
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  type: string;
+  layout: string;
+  city: string;
+  timeline: string;
+  message: string;
+};
+
+const empty: FormData = {
+  name: "",
+  email: "",
+  phone: "",
+  type: "",
+  layout: "",
+  city: "",
+  timeline: "",
+  message: "",
+};
+
 export default function ContactForm() {
   const [step, setStep] = useState<Step>(1);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState<FormData>(empty);
+
+  function set(field: keyof FormData) {
+    return (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setForm((prev) => ({ ...prev, [field]: e.target.value }));
+  }
+
+  async function submit() {
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Chyba odeslání");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Chyba odeslání");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <section
@@ -28,11 +79,11 @@ export default function ContactForm() {
               Poptávka rekonstrukce bytu
             </p>
             <h2 className="mb-4 text-4xl text-foreground md:text-5xl">
-              Bezplatná konzultace
+              Bezplatná prohlídka a konzultace
             </h2>
             <p className="mx-auto max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Pošlete nám poptávku a připravíme vám nabídku na rekonstrukci bytu na
-              klíč s pevnou cenou — do pěti pracovních dní.
+              Napište nám nebo zavolejte. Přijedeme k vám, posoudíme stav bytu
+              a připravíme nabídku s pevnou cenou — do pěti pracovních dní od prohlídky.
             </p>
           </div>
 
@@ -52,7 +103,7 @@ export default function ContactForm() {
               </div>
             ) : (
               <>
-                {/* Step indicator — minimal numbered dots */}
+                {/* Step indicator */}
                 <div className="mb-10 flex items-center justify-between">
                   {steps.map((s, idx) => (
                     <div key={s.num} className="flex flex-1 items-center">
@@ -91,15 +142,16 @@ export default function ContactForm() {
                 {step === 1 && (
                   <div className="space-y-6">
                     <div className="grid gap-6 md:grid-cols-2">
-                      <Field id="name" label="Celé jméno *" type="text" placeholder="Bogdan Medved" autoComplete="name" />
-                      <Field id="email" label="E-mailová adresa *" type="email" placeholder="bogdan@priklad.cz" autoComplete="email" />
+                      <Field id="name" label="Celé jméno *" type="text" placeholder="Bogdan Medved" autoComplete="name" value={form.name} onChange={set("name")} />
+                      <Field id="email" label="E-mailová adresa *" type="email" placeholder="bogdan@priklad.cz" autoComplete="email" value={form.email} onChange={set("email")} />
                     </div>
-                    <Field id="phone" label="Telefonní číslo" type="tel" placeholder="+420 776 219 323" autoComplete="tel" />
+                    <Field id="phone" label="Telefonní číslo" type="tel" placeholder="+420 776 219 323" autoComplete="tel" value={form.phone} onChange={set("phone")} />
                     <div className="flex justify-end pt-2">
                       <button
                         type="button"
                         onClick={() => setStep(2)}
-                        className="label-eyebrow inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85"
+                        disabled={!form.name || !form.email}
+                        className="label-eyebrow inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85 disabled:opacity-50"
                       >
                         Pokračovat
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden="true">
@@ -117,7 +169,7 @@ export default function ContactForm() {
                       <label className="mb-2 block font-body text-xs uppercase tracking-wider text-muted-foreground">
                         Typ rekonstrukce *
                       </label>
-                      <select className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
+                      <select value={form.type} onChange={set("type")} className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
                         <option value="">Vyberte typ…</option>
                         <option>Kompletní rekonstrukce bytu</option>
                         <option>Rekonstrukce koupelny</option>
@@ -132,7 +184,7 @@ export default function ContactForm() {
                         <label className="mb-2 block font-body text-xs uppercase tracking-wider text-muted-foreground">
                           Dispozice bytu
                         </label>
-                        <select className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
+                        <select value={form.layout} onChange={set("layout")} className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
                           <option value="">Vyberte…</option>
                           <option>Garsonka / 1+kk</option>
                           <option>1+1</option>
@@ -143,7 +195,7 @@ export default function ContactForm() {
                           <option>4+kk a větší</option>
                         </select>
                       </div>
-                      <Field id="city" label="Adresa / část Prahy" type="text" placeholder="Vinohrady, Praha 2" />
+                      <Field id="city" label="Adresa / část Prahy" type="text" placeholder="Vinohrady, Praha 2" value={form.city} onChange={set("city")} />
                     </div>
                     <div className="flex justify-between pt-2">
                       <button type="button" onClick={() => setStep(1)} className="label-eyebrow inline-flex items-center gap-2 border border-border px-6 py-3 text-[0.68rem] text-foreground transition-colors hover:bg-secondary">
@@ -166,7 +218,7 @@ export default function ContactForm() {
                       <label className="mb-2 block font-body text-xs uppercase tracking-wider text-muted-foreground">
                         Plánovaný termín zahájení
                       </label>
-                      <select className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
+                      <select value={form.timeline} onChange={set("timeline")} className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
                         <option value="">Vyberte…</option>
                         <option>Do 1 měsíce</option>
                         <option>1–3 měsíce</option>
@@ -182,23 +234,33 @@ export default function ContactForm() {
                       <textarea
                         id="message"
                         rows={4}
+                        value={form.message}
+                        onChange={set("message")}
                         className="w-full resize-none border-0 border-b border-input bg-transparent pb-2 font-body text-sm text-foreground focus:border-primary focus:outline-none placeholder:text-muted-foreground/50"
                         placeholder="Stav bytu, co chcete změnit, zvláštní požadavky…"
                       />
                     </div>
+
+                    {error && (
+                      <p className="text-sm text-red-600">{error}</p>
+                    )}
+
                     <div className="flex justify-between pt-2">
                       <button type="button" onClick={() => setStep(2)} className="label-eyebrow inline-flex items-center gap-2 border border-border px-6 py-3 text-[0.68rem] text-foreground transition-colors hover:bg-secondary">
                         Zpět
                       </button>
                       <button
                         type="button"
-                        onClick={() => setSubmitted(true)}
-                        className="label-eyebrow inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85"
+                        onClick={submit}
+                        disabled={sending}
+                        className="label-eyebrow inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85 disabled:opacity-60"
                       >
-                        Odeslat poptávku
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden="true">
-                          <path d="M5 12h14m-7-7 7 7-7 7" />
-                        </svg>
+                        {sending ? "Odesílám…" : "Odeslat poptávku"}
+                        {!sending && (
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden="true">
+                            <path d="M5 12h14m-7-7 7 7-7 7" />
+                          </svg>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -218,12 +280,16 @@ function Field({
   type,
   placeholder,
   autoComplete,
+  value,
+  onChange,
 }: {
   id: string;
   label: string;
   type: string;
   placeholder: string;
   autoComplete?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div>
@@ -236,6 +302,8 @@ function Field({
         type={type}
         autoComplete={autoComplete}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none placeholder:text-muted-foreground/45"
       />
     </div>

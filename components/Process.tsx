@@ -1,10 +1,10 @@
 const steps = [
   {
     num: "01",
-    title: "Nezávazná konzultace",
+    title: "Bezplatná prohlídka bytu",
     description:
-      "Zavolejte nebo napište — domluvíme se na prohlídce vašeho bytu. Prvotní konzultace je zdarma a k ničemu vás nezavazuje.",
-    detail: "Zdarma, bez závazků",
+      "Zavolejte nebo napište — domluvíme se na osobní návštěvě. Přijedeme přímo k vám, posoudíme stav bytu, prodiskutujeme váš záměr a odpovíme na vaše otázky. Konzultace i prohlídka jsou bezplatné.",
+    detail: "Zdarma, přijdeme k vám",
   },
   {
     num: "02",
@@ -90,7 +90,7 @@ export default function Process() {
             href="#kontakt"
             className="label-eyebrow inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85"
           >
-            Domluvit nezávaznou konzultaci
+            Domluvit bezplatnou konzultaci
           </a>
           <a
             href="tel:+420776219323"

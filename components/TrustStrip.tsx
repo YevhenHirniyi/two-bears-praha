@@ -1,8 +1,8 @@
 const items = [
-  { value: "150+", label: "Dokončených rekonstrukcí" },
-  { value: "8 let", label: "Zkušeností v Praze" },
-  { value: "98 %", label: "Spokojených klientů" },
+  { value: "Bezplatná", label: "Prohlídka bytu na místě" },
   { value: "Pevná", label: "Cena bez překvapení" },
+  { value: "Jeden", label: "Kontakt od začátku do konce" },
+  { value: "Záruční", label: "Servis po předání" },
 ];
 
 export default function TrustStrip() {

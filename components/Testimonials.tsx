@@ -1,39 +1,35 @@
 const testimonials = [
   {
-    name: "Smith",
-    email: "m.smith@gmail.com",
-    location: "Praha, Vinohrady",
+    id: "t1",
+    name: "Klient, Praha 2 – Vinohrady",
     project: "Kompletní rekonstrukce 2+kk",
     quote:
-      "Rekonstrukci jsme svěřili Two Bears a nelitujeme. Pevná cena, dodržený termín a výsledek nad očekávání. Komunikace na jedničku — vždy jsme věděli, co se právě děje.",
-    initials: "S",
+      "Rekonstrukci jsme zadali Two Bears a jsme spokojeni. Pevná cena, dodržený termín, výsledek odpovídal domluvě. Komunikace po celou dobu prací byla bezproblémová.",
+    initials: "K",
   },
   {
-    name: "Williams",
-    email: "p.williams@gmail.com",
-    location: "Praha, Žižkov",
+    id: "t2",
+    name: "Majitel bytu, Praha 3 – Žižkov",
     project: "Kompletní rekonstrukce 3+kk",
     quote:
-      "Konečně firma, která nezmizí po podpisu smlouvy. Celé dva měsíce jsme měli přehled o průběhu prací a byt byl předán přesně jak slíbili. Doporučujeme všem.",
-    initials: "W",
+      "Firma, která nezmizí po podpisu smlouvy. Po celou dobu prací jsme měli přehled, co se kde děje, a byt byl předán v domluvený termín. Doporučuji.",
+    initials: "M",
   },
   {
-    name: "Brown",
-    email: "j.brown@gmail.com",
-    location: "Praha, Smíchov",
+    id: "t3",
+    name: "Klientka, Praha 5 – Smíchov",
     project: "Rekonstrukce koupelny",
     quote:
-      "Koupelnu jsme chtěli moderní a bez kompromisů. Dostali jsme přesně to. Práce na obkladech jsou dokonalé — každá dlaždice sedí přesně. Jsme moc spokojení.",
-    initials: "B",
+      "Koupelnu jsme chtěli moderní a zpracovanou do detailu. Výsledek předčil očekávání — práce na obkladech jsou precizní. Celý průběh byl bezproblémový.",
+    initials: "K",
   },
   {
-    name: "Johnson",
-    email: "o.johnson@gmail.com",
-    location: "Praha, Holešovice",
+    id: "t4",
+    name: "Majitelka bytu, Praha 7 – Holešovice",
     project: "Rekonstrukce kuchyně a chodby",
     quote:
-      "Řekli cenu, podepsali smlouvu, dodali. Žádné nepříjemné překvapení při fakturaci. Příště beru celý byt. Oceňuji hlavně přesnost a pořádek po práci.",
-    initials: "J",
+      "Domluvená cena, dodržená smlouva, čistý průběh prací. Přesně to, co jsem hledala. Oceňuji hlavně přehlednost a pořádek, který po sobě tým zanechal.",
+    initials: "M",
   },
 ];
 
@@ -52,8 +48,7 @@ export default function Testimonials() {
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <h2 className="text-4xl text-foreground md:text-5xl">Reference</h2>
             <p className="max-w-sm text-base text-muted-foreground">
-              Přes 150 dokončených rekonstrukcí. Tady jsou příběhy těch, kteří
-              nám svěřili svůj domov.
+              Zpětná vazba od klientů, kteří nám svěřili rekonstrukci svého bytu.
             </p>
           </div>
         </div>
@@ -62,7 +57,7 @@ export default function Testimonials() {
         <div className="grid gap-4 md:grid-cols-2">
           {testimonials.map((t) => (
             <blockquote
-              key={t.email}
+              key={t.id}
               className="relative overflow-hidden bg-card p-8 md:p-10"
             >
               {/* Decorative large quote mark */}
@@ -102,10 +97,7 @@ export default function Testimonials() {
                     {t.name}
                   </p>
                   <p className="label-eyebrow text-[0.5rem] text-muted-foreground/70">
-                    {t.email}
-                  </p>
-                  <p className="label-eyebrow text-[0.48rem] text-muted-foreground/50">
-                    {t.location} · {t.project}
+                    {t.project}
                   </p>
                 </div>
               </footer>

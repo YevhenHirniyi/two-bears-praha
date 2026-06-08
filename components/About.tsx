@@ -13,7 +13,7 @@ export default function About() {
           <div className="relative min-h-[320px] md:min-h-[560px]">
             <Image
               src="/photos/p-living-room.jpg"
-              alt="Dokončený obývací pokoj v Praze — Two Bears Renovations"
+              alt="Dokončený obývací pokoj v Praze — Two Bears Renovation"
               fill
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -31,10 +31,9 @@ export default function About() {
               <em className="font-light italic">jak mají vypadat</em>
             </h2>
             <p className="mb-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              Two Bears Renovations je pražská stavební parta, která se od roku 2016 specializuje
-              výhradně na rekonstrukce bytů. Nepracujeme s náhodně sesbíranými
-              subdodavateli — máme vlastní, prověřený tým, který u nás pracuje
-              dlouhodobě.
+              Two Bears Renovation je rekonstrukční firma specializující se výhradně
+              na bytové rekonstrukce v Praze. Spolupracujeme s ověřenými řemeslníky,
+              kteří znají svůj obor — a berou každou zakázku osobně.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
               Každý projekt řídí jeden projektový vedoucí — jediný člověk, kterého
@@ -44,7 +43,7 @@ export default function About() {
             <div className="mt-10 flex items-center gap-4">
               <div className="h-px w-10 shrink-0 bg-border" aria-hidden="true" />
               <span className="label-eyebrow text-[0.54rem] tracking-[0.15em] text-muted-foreground/60">
-                Praha · od roku 2016
+                Praha · Rekonstrukce bytů na klíč
               </span>
             </div>
           </div>

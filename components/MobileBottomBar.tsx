@@ -1,6 +1,6 @@
 export default function MobileBottomBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-border bg-background/97 backdrop-blur-lg shadow-[0_-6px_20px_-10px_rgba(0,0,0,0.12)] md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-border bg-background shadow-[0_-6px_20px_-10px_rgba(0,0,0,0.12)] md:hidden">
       <a
         href="tel:+420776219323"
         className="label-eyebrow flex items-center justify-center gap-2 py-4 text-[0.66rem] text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground"

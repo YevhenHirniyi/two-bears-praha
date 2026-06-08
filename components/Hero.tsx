@@ -44,7 +44,7 @@ export default function Hero() {
               href="#kontakt"
               className="label-eyebrow inline-flex items-center justify-center border border-primary-foreground/50 px-8 py-3.5 text-[0.68rem] text-primary-foreground backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground hover:text-foreground"
             >
-              Domluvit nezávaznou konzultaci
+              Domluvit bezplatnou konzultaci
             </a>
             <a
               href="#realizace"
@@ -80,7 +80,7 @@ export default function Hero() {
           className="label-eyebrow text-[0.44rem] text-primary-foreground"
           style={{ writingMode: "vertical-rl", letterSpacing: "0.2em" }}
         >
-          Praha · Rekonstrukce · 2016
+          Praha · Rekonstrukce bytů
         </span>
         <div className="h-16 w-px bg-primary-foreground" />
       </div>
