@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
 
 const navLinks = [
+  { label: "O nás", href: "#o-nas" },
   { label: "Služby", href: "#sluzby" },
   { label: "Realizace", href: "#realizace" },
-  { label: "Postup", href: "#postup" },
-  { label: "O nás", href: "#o-nas" },
+  { label: "Proces", href: "#postup" },
+  { label: "Kontakty", href: "#kontakt" },
 ];
 
 export default function Navbar() {

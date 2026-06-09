@@ -82,8 +82,7 @@ export default function ContactForm() {
               Bezplatná prohlídka a konzultace
             </h2>
             <p className="mx-auto max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
-              Napište nám nebo zavolejte. Přijedeme k vám, posoudíme stav bytu
-              a připravíme nabídku s pevnou cenou — do pěti pracovních dní od prohlídky.
+              Napište nám nebo zavolejte. Přijedeme k vám, posoudíme stav a navrhneme nejlepší řešení.
             </p>
           </div>
 
@@ -171,11 +170,10 @@ export default function ContactForm() {
                       </label>
                       <select value={form.type} onChange={set("type")} className="w-full border-0 border-b border-input bg-transparent pb-2.5 font-body text-sm text-foreground focus:border-primary focus:outline-none">
                         <option value="">Vyberte typ…</option>
-                        <option>Kompletní rekonstrukce bytu</option>
-                        <option>Rekonstrukce koupelny</option>
-                        <option>Rekonstrukce kuchyně</option>
-                        <option>Elektroinstalace</option>
-                        <option>Podlahy a obklady</option>
+                        <option>Kompletní rekonstrukce na klíč</option>
+                        <option>Fasády a venkovní úpravy</option>
+                        <option>Terasy a venkovní stavby</option>
+                        <option>Stavební práce a realizace</option>
                         <option>Jiné / zatím nevím</option>
                       </select>
                     </div>

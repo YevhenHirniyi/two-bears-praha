@@ -30,28 +30,38 @@ export default function Hero() {
           <div className="mb-6 flex items-center gap-4">
             <div className="h-px w-10 shrink-0 bg-primary-foreground/35" aria-hidden="true" />
             <p className="label-eyebrow text-[0.58rem] tracking-[0.16em] text-primary-foreground/50">
-              Rekonstrukce bytů Praha na klíč
+              Komplexní rekonstrukce | Praha a okolí
             </p>
           </div>
 
-          <h1 className="mb-9 text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.88] tracking-tight text-primary-foreground">
-            Kompletní rekonstrukce bytu{" "}
-            <em className="font-light italic">na klíč.</em>
+          <h1 className="mb-6 text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.88] tracking-tight text-primary-foreground">
+            Proměníme vaše představy{" "}
+            <em className="font-light italic">ve skutečnost.</em>
           </h1>
+
+          <div className="mb-9 max-w-md space-y-2">
+            <p className="text-base leading-relaxed text-primary-foreground/75">
+              Kompletní realizace na klíč. Od prvního návrhu až po finální předání.
+            </p>
+            <p className="text-base leading-relaxed text-primary-foreground/75">
+              Postaráme se o celý proces tak, aby výsledek odpovídal vašim představám – kvalitně, profesionálně a se{" "}
+              <span className="text-primary">zárukou 2 roky</span>.
+            </p>
+          </div>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-7">
             <a
               href="#kontakt"
               className="label-eyebrow inline-flex items-center justify-center border border-primary-foreground/50 px-8 py-3.5 text-[0.68rem] text-primary-foreground backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground hover:text-foreground"
             >
-              Domluvit bezplatnou konzultaci
+              Nezávazná konzultace zdarma
             </a>
             <a
               href="#realizace"
               className="label-eyebrow group inline-flex items-center gap-2 py-1.5 text-[0.68rem] text-primary-foreground/55 transition-colors hover:text-primary-foreground"
             >
               <span className="border-b border-primary-foreground/25 pb-0.5 transition-colors group-hover:border-primary-foreground/55">
-                Prohlédnout realizace
+                Naše realizace
               </span>
               <svg
                 viewBox="0 0 24 24"
@@ -80,7 +90,7 @@ export default function Hero() {
           className="label-eyebrow text-[0.44rem] text-primary-foreground"
           style={{ writingMode: "vertical-rl", letterSpacing: "0.2em" }}
         >
-          Praha · Rekonstrukce bytů
+          Praha a okolí · Rekonstrukce a realizace
         </span>
         <div className="h-16 w-px bg-primary-foreground" />
       </div>

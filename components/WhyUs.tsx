@@ -1,15 +1,15 @@
 const reasons = [
   {
     num: "01",
-    title: "Ověření řemeslníci, stálý tým",
+    title: "Vždy vám pomůžeme najít správné řešení",
     description:
-      "Spolupracujeme s prověřenými řemeslníky, kteří se na bytové rekonstrukce specializují. Stálý okruh lidí zajišťuje konzistentní kvalitu na každé zakázce.",
+      "Nasloucháme vašim představám a potřebám a navrhujeme praktická, funkční a esteticky vyvážená řešení na míru vašemu rozpočtu.",
   },
   {
     num: "02",
     title: "Pevná cena, žádná překvapení",
     description:
-      "Cenu stanovíme na základě osobní prohlídky a podrobného výkazu prací. Co nabídneme, to zaplatíte — ani korunu víc bez vašeho souhlasu.",
+      "Cenu stanovíme na základě osobní prohlídky a detailního výkazu prací. Co nabídneme, to platí — ani korunu víc bez vašeho souhlasu.",
   },
   {
     num: "03",
@@ -19,21 +19,21 @@ const reasons = [
   },
   {
     num: "04",
-    title: "Zkušenosti s desítkami pražských bytů",
+    title: "Zkušenosti s desítkami pražských projektů",
     description:
-      "Rekonstruujeme výhradně v Praze. Známe místní dodavatele, normy i specifika panelových a cihlových domů v každé čtvrti.",
+      "Rekonstruujeme a realizujeme projekty v Praze. Známe místní dodavatele, normy a specifika panelových i cihlových domů v každé čtvrti.",
   },
   {
     num: "05",
     title: "Čistý průběh prací",
     description:
-      "Chráníme váš majetek — zakrýváme podlahy, chráníme výtah a společné prostory. Po práci dáváme byt do pořádku.",
+      "Dbáme na pořádek na stavbě, dodržujeme termíny a pravidelně vás informujeme o postupu. Po sobě vždy uklidíme.",
   },
   {
     num: "06",
-    title: "Záruka na odvedenou práci",
+    title: "Záruka 2 roky",
     description:
-      "Na všechny práce poskytujeme záruku. Pokud po předání zjistíte nedostatek, přijedeme a vyřešíme ho bez otálení.",
+      "Za kvalitu našich prací si stojíme. Na veškeré provedené práce poskytujeme záruku 2 roky.",
   },
 ];
 
@@ -55,7 +55,7 @@ export default function WhyUs() {
               Co nás odlišuje
             </h2>
             <p className="max-w-sm text-base text-muted-foreground">
-              V Praze jsou desítky stavebních firem. Tady je šest důvodů, proč si
+              V Praze je desítky stavebních firem. Tady je šest důvodů, proč si
               klienti vybírají právě nás — a vracejí se.
             </p>
           </div>

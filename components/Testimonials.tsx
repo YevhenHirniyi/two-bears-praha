@@ -1,3 +1,10 @@
+const stats = [
+  { value: "100+", label: "Spokojených klientů" },
+  { value: "2 roky", label: "Záruka na provedené práce" },
+  { value: "Osobní přístup", label: "ke každému projektu" },
+  { value: "Doporučují nás", label: "přátelům a známým" },
+];
+
 const testimonials = [
   {
     id: "t1",
@@ -17,19 +24,11 @@ const testimonials = [
   },
   {
     id: "t3",
-    name: "Klientka, Praha 5 – Smíchov",
-    project: "Rekonstrukce koupelny",
+    name: "Klientka, Praha 6 – Dejvice",
+    project: "Kompletní rekonstrukce 4+kk",
     quote:
-      "Koupelnu jsme chtěli moderní a zpracovanou do detailu. Výsledek předčil očekávání — práce na obkladech jsou precizní. Celý průběh byl bezproblémový.",
-    initials: "K",
-  },
-  {
-    id: "t4",
-    name: "Majitelka bytu, Praha 7 – Holešovice",
-    project: "Rekonstrukce kuchyně a chodby",
-    quote:
-      "Domluvená cena, dodržená smlouva, čistý průběh prací. Přesně to, co jsem hledala. Oceňuji hlavně přehlednost a pořádek, který po sobě tým zanechal.",
-    initials: "M",
+      "Oceňuji jejich pomoc s výběrem správných řešení. Poradili nám s dispozicí, materiály i rozpočtem tak, aby výsledek byl krásný a zároveň praktický. Skvělá zkušenost.",
+    initials: "L",
   },
 ];
 
@@ -41,20 +40,30 @@ export default function Testimonials() {
     >
       <div className="container-max section-px">
         {/* Header */}
-        <div className="mb-12 border-t border-border pt-10 md:mb-14">
+        <div className="mb-10 border-t border-border pt-10 md:mb-12">
           <p className="label-eyebrow mb-3 text-[0.6rem] text-muted-foreground">
             Co říkají klienti
           </p>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <h2 className="text-4xl text-foreground md:text-5xl">Reference</h2>
             <p className="max-w-sm text-base text-muted-foreground">
-              Zpětná vazba od klientů, kteří nám svěřili rekonstrukci svého bytu.
+              Zpětná vazba od klientů, kteří nám svěřili rekonstrukci svého bytu nebo domu.
             </p>
           </div>
         </div>
 
+        {/* Stats strip */}
+        <div className="mb-10 grid grid-cols-2 gap-px border border-border/40 bg-border/20 md:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center bg-secondary/40 px-4 py-6 text-center md:py-8">
+              <div className="mb-1 font-display text-xl text-foreground md:text-2xl">{s.value}</div>
+              <div className="label-eyebrow text-[0.52rem] text-muted-foreground">{s.label.toUpperCase()}</div>
+            </div>
+          ))}
+        </div>
+
         {/* Cards */}
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 md:grid-cols-3">
           {testimonials.map((t) => (
             <blockquote
               key={t.id}
@@ -103,6 +112,27 @@ export default function Testimonials() {
               </footer>
             </blockquote>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12 flex flex-col items-center gap-5 border-t border-border/50 pt-12 text-center sm:flex-row sm:justify-between sm:text-left">
+          <div>
+            <p className="mb-1 text-xl text-foreground md:text-2xl">
+              Přidejte se k desítkám spokojených klientů.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Rádi proměníme i váš prostor.
+            </p>
+          </div>
+          <a
+            href="#kontakt"
+            className="label-eyebrow inline-flex shrink-0 items-center gap-2 bg-foreground px-8 py-3.5 text-[0.68rem] text-background transition-opacity hover:opacity-85"
+          >
+            Domluvit konzultaci
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden="true">
+              <path d="M5 12h14m-7-7 7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

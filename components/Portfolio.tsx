@@ -3,59 +3,186 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const filters = ["Vše", "Byty", "Koupelny", "Kuchyně"] as const;
+const filters = ["Vše", "Rekonstrukce", "Fasády", "Terasy", "Stavební práce"] as const;
 type Filter = (typeof filters)[number];
 
 const projects: {
   title: string;
   location: string;
   category: Exclude<Filter, "Vše">;
-  image: string;
+  images: string[];
   imageAlt: string;
 }[] = [
   {
-    title: "Rekonstrukce bytu 2+kk",
-    location: "Praha, Vinohrady",
-    category: "Byty",
-    image: "/photos/p2-living.jpg",
-    imageAlt: "Rekonstrukce obývacího pokoje ve 2+kk na Vinohradech",
-  },
-  {
-    title: "Kompletní rekonstrukce",
-    location: "Praha, Vinohrady",
-    category: "Byty",
-    image: "/photos/p4-empty.jpg",
-    imageAlt: "Kompletní rekonstrukce bytu na Vinohradech — světlý pokoj s parkety",
-  },
-  {
-    title: "Rekonstrukce koupelny",
-    location: "Praha, Smíchov",
-    category: "Koupelny",
-    image: "/photos/p7-bath-detail.png",
-    imageAlt: "Rekonstrukce koupelny na Smíchově — tyrkysové obklady, zlaté armatury",
-  },
-  {
-    title: "Rekonstrukce kuchyně",
-    location: "Praha, Holešovice",
-    category: "Kuchyně",
-    image: "/photos/p8-kitchen.jpg",
-    imageAlt: "Rekonstrukce kuchyně v Holešovicích — luxusní provedení s mramorovou podlahou",
+    title: "Rekonstrukce bytu",
+    location: "Praha 12",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-12-a/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Praha 12",
   },
   {
     title: "Rekonstrukce bytu 3+kk",
-    location: "Praha, Nusle",
-    category: "Byty",
-    image: "/photos/p1-hallway.jpg",
-    imageAlt: "Rekonstrukce bytu 3+kk v Nuslích — chodba s leštěnou podlahou a LED osvětlením",
+    location: "Praha 12",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-12-b/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu 3+kk Praha 12",
   },
   {
-    title: "Generální rekonstrukce",
-    location: "Praha, Dejvice",
-    category: "Byty",
-    image: "/photos/p5-marble.jpg",
-    imageAlt: "Generální rekonstrukce prostorného bytu v Dejvicích — velký prostor s mramorovou podlahou",
+    title: "Kompletní rekonstrukce",
+    location: "Praha 12",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 5 }, (_, i) => `/photos/praha-12-c/${i + 1}.jpeg`),
+    imageAlt: "Kompletní rekonstrukce bytu Praha 12",
+  },
+  {
+    title: "Rekonstrukce bytu",
+    location: "Praha 4",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 7 }, (_, i) => `/photos/praha-4/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Praha 4",
+  },
+  {
+    title: "Rekonstrukce bytu",
+    location: "Praha 8, Střížkov",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-8-strizkov/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Praha 8 Střížkov",
+  },
+  {
+    title: "Rekonstrukce bytu",
+    location: "Praha, Stodůlky",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 10 }, (_, i) => `/photos/praha-stodulky-a/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Praha Stodůlky",
+  },
+  {
+    title: "Kompletní rekonstrukce",
+    location: "Praha, Stodůlky",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 9 }, (_, i) => `/photos/praha-stodulky-b/${i + 1}.jpeg`),
+    imageAlt: "Kompletní rekonstrukce bytu Praha Stodůlky",
+  },
+  {
+    title: "Rekonstrukce bytu",
+    location: "Měšice u Prahy",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 5 }, (_, i) => `/photos/mesice-u-prahy/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Měšice u Prahy",
+  },
+  {
+    title: "Rekonstrukce koupelny",
+    location: "Měšice u Prahy",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 3 }, (_, i) => `/photos/mesice-koupelna/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce koupelny Měšice u Prahy",
+  },
+  {
+    title: "Rekonstrukce koupelny",
+    location: "Praha 8, Střížkov",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 4 }, (_, i) => `/photos/strizkov-koupelna/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce koupelny Praha 8 Střížkov",
+  },
+  {
+    title: "Rekonstrukce koupelny",
+    location: "Praha, Stodůlky",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 3 }, (_, i) => `/photos/stodulky-koupelna/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce koupelny Praha Stodůlky",
+  },
+  {
+    title: "Rekonstrukce bytu",
+    location: "Chomutov",
+    category: "Rekonstrukce",
+    images: Array.from({ length: 8 }, (_, i) => `/photos/chomutov/${i + 1}.jpeg`),
+    imageAlt: "Rekonstrukce bytu Chomutov",
   },
 ];
+
+function ProjectCard({
+  project,
+}: {
+  project: (typeof projects)[number];
+}) {
+  const [index, setIndex] = useState(0);
+  const total = project.images.length;
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIndex((i) => (i - 1 + total) % total);
+  };
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIndex((i) => (i + 1) % total);
+  };
+
+  return (
+    <article className="group relative cursor-pointer overflow-hidden">
+      <div className="relative aspect-[3/4] overflow-hidden md:aspect-[4/5]">
+        <Image
+          src={project.images[index]}
+          alt={project.imageAlt}
+          fill
+          className="object-cover transition-all duration-700 md:group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+
+        {/* Prev / Next arrows — show when multiple images */}
+        {total > 1 && (
+          <>
+            <button
+              onClick={prev}
+              aria-label="Předchozí foto"
+              className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/50 p-2 text-background opacity-0 transition-opacity duration-200 hover:bg-foreground/80 group-hover:opacity-100"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <button
+              onClick={next}
+              aria-label="Další foto"
+              className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-foreground/50 p-2 text-background opacity-0 transition-opacity duration-200 hover:bg-foreground/80 group-hover:opacity-100"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+
+            {/* Dot indicators */}
+            <div className="absolute bottom-14 left-1/2 z-10 flex -translate-x-1/2 gap-1.5 md:bottom-16">
+              {project.images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setIndex(i); }}
+                  aria-label={`Foto ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-200 ${
+                    i === index ? "w-4 bg-background" : "w-1.5 bg-background/50"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Hover overlay */}
+      <div className="absolute inset-0 flex items-end bg-foreground/55 p-6 opacity-0 transition-opacity duration-500 md:group-hover:opacity-100">
+        <div>
+          <h3 className="mb-1 text-xl text-background">{project.title}</h3>
+          <p className="label-eyebrow text-[0.58rem] text-background/55">
+            {project.location}
+          </p>
+        </div>
+      </div>
+      {/* Always-visible label on mobile */}
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/75 to-transparent p-5 md:hidden">
+        <h3 className="text-base text-background">{project.title}</h3>
+        <p className="label-eyebrow text-[0.56rem] text-background/55">{project.location}</p>
+      </div>
+    </article>
+  );
+}
 
 export default function Portfolio() {
   const [active, setActive] = useState<Filter>("Vše");
@@ -74,15 +201,14 @@ export default function Portfolio() {
         <div className="mb-10 flex flex-col gap-4 md:mb-12 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="label-eyebrow mb-3 text-[0.6rem] text-background/40">
-              Rekonstrukce bytů Praha – realizace
+              Praha a okolí · realizace
             </p>
             <h2 className="max-w-xl text-4xl text-background md:text-5xl">
-              Naše realizace
+              Naše práce mluví za nás.
             </h2>
           </div>
           <p className="max-w-sm text-base text-background/50">
-            Prohlédněte si naše dokončené rekonstrukce bytů v Praze — od
-            kompletních přestaveb po dílčí rekonstrukce koupelen a kuchyní.
+            Podívejte se na projekty, které jsme dokončili pro naše klienty. Každá realizace je pro nás závazek — dbáme na detail a čisté provedení.
           </p>
         </div>
 
@@ -103,39 +229,10 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Grid — taller portrait cards */}
+        {/* Grid */}
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-2 lg:grid-cols-3">
           {visible.map((project) => (
-            <article
-              key={`${project.title}-${project.location}`}
-              className="group relative cursor-pointer overflow-hidden"
-            >
-              <div className="relative aspect-[3/4] overflow-hidden md:aspect-[4/5]">
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 md:group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
-              {/* Hover overlay */}
-              <div className="absolute inset-0 flex items-end bg-foreground/55 p-6 opacity-0 transition-opacity duration-500 md:group-hover:opacity-100">
-                <div>
-                  <h3 className="mb-1 text-xl text-background">
-                    {project.title}
-                  </h3>
-                  <p className="label-eyebrow text-[0.58rem] text-background/55">
-                    {project.location}
-                  </p>
-                </div>
-              </div>
-              {/* Always-visible label on mobile */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/75 to-transparent p-5 md:hidden">
-                <h3 className="text-base text-background">{project.title}</h3>
-                <p className="label-eyebrow text-[0.56rem] text-background/55">{project.location}</p>
-              </div>
-            </article>
+            <ProjectCard key={`${project.title}-${project.location}`} project={project} />
           ))}
         </div>
 
@@ -145,7 +242,7 @@ export default function Portfolio() {
             href="#kontakt"
             className="label-eyebrow inline-flex items-center gap-2 border border-background/25 px-8 py-3.5 text-[0.68rem] text-background transition-colors hover:bg-background hover:text-foreground"
           >
-            Konzultovat váš projekt
+            Domluvit konzultaci
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5" aria-hidden="true">
               <path d="M5 12h14m-7-7 7 7-7 7" />
             </svg>

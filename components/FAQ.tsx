@@ -4,36 +4,44 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Jak dlouho trvá kompletní rekonstrukce bytu 2+kk?",
-    a: "Kompletní rekonstrukce bytu 2+kk trvá obvykle 6–10 týdnů v závislosti na rozsahu prací, stavu původního bytu a dostupnosti materiálů. Přesný harmonogram dostanete v nabídce ještě před podpisem smlouvy.",
+    q: "Jak dlouho trvá kompletní rekonstrukce?",
+    a: "Kompletní rekonstrukce obvykle trvá přibližně 2 až 6 měsíců. Délka realizace závisí na rozsahu práce, technickém stavu objektu a dostupnosti materiálů. Některé materiály mohou mít delší dodací lhůty – v určitých případech až několik měsíců. Celkový termín vždy přizpůsobujeme konkrétnímu projektu a zvolenému řešení.",
   },
   {
-    q: "Kolik stojí rekonstrukce bytu v Praze?",
-    a: "Cena se odvíjí od velikosti bytu, rozsahu prací a úrovně materiálů. Orientačně počítejte 8 000–15 000 Kč/m² za kompletní rekonstrukci. Přesnou a závaznou cenu stanovíme po osobní prohlídce — zdarma a bez závazků.",
+    q: "Kolik stojí rekonstrukce v Praze?",
+    a: "Cena se odvíjí od rozsahu prací, výběru materiálů a technického stavu bytu. Po prohlídce vám připravíme transparentní cenovou nabídku na míru bez skrytých poplatků.",
   },
   {
-    q: "Pracujete v panelových domech?",
-    a: "Ano, máme bohaté zkušenosti s rekonstrukcemi panelových bytů. Dobře známe specifika panelové výstavby — bourání příček, výměnu jader, nové rozvody. Panelové byty tvoří velkou část naší práce.",
+    q: "Jak probíhá spolupráce?",
+    a: "Nejprve nás kontaktujte a domluvíme si osobní schůzku. Na místě náš technik posoudí stav objektu, provede přesné zaměření, poskytne konzultaci a detailně s vámi probere vaše představy, potřeby a očekávání. Na základě schůzky pro vás připravíme cenovou nabídku a společně vybereme nejvhodnější řešení. V případě potřeby vám pomůžeme vybrat materiály, styl a směr realizace tak, aby výsledek odpovídal vašim představám. Následně společně projdeme všechny etapy realizace a nastavíme harmonogram i platební podmínky. Platby probíhají postupně podle jednotlivých dokončených etap — vše je předem uvedeno ve smlouvě. Po dokončení realizace proběhne společné předání projektu formou předávacího protokolu a od tohoto okamžiku začíná běžet záruka 2 roky na provedené práce.",
   },
   {
-    q: "Potřebuji souhlas SVJ nebo majitele domu?",
-    a: "U zásahů do nosných konstrukcí nebo společných rozvodů budovy ano. Pomůžeme vám připravit žádost o souhlas SVJ a posoudíme, co konkrétně ke schválení potřebujete — s tím máme praxi.",
+    q: "Musím si materiál zajistit sám, nebo ho dodáte vy?",
+    a: "Veškerý stavební materiál zajišťujeme my a je součástí předem domluvené cenové nabídky. Povrchové materiály (například obklady, dlažby, podlahy, dveře nebo dekorativní prvky) si obvykle vybírá a pořizuje klient podle vlastních preferencí. Po vzájemné domluvě však můžeme zajistit i dodání těchto materiálů a postarat se o celý proces za vás. Rádi vám zároveň pomůžeme s výběrem tak, aby výsledek odpovídal kvalitě, rozpočtu i vašim představám.",
   },
   {
-    q: "Mohu byt během rekonstrukce obývat?",
-    a: "Závisí na rozsahu prací. U dílčích rekonstrukcí (koupelna, kuchyně) je to často možné s dočasným omezením. U kompletní rekonstrukce doporučujeme byt po dobu prací uvolnit — práce budou rychlejší a výsledek kvalitnější.",
+    q: "Pomůžete nám najít nejlepší řešení?",
+    a: "Ano. Nasloucháme vašim potřebám a navrhujeme praktická, funkční a estetická řešení na míru vašemu rozpočtu a životnímu stylu. Naším cílem je, aby výsledek předčil vaše očekávání.",
   },
   {
-    q: "Jaká je záloha a jak probíhají platby?",
-    a: "Záloha při podpisu smlouvy je 20–30 % z ceny zakázky. Zbytek platíte postupně dle dosaženého stavebního stavu, který společně odsouhlasíme. Závěrečná platba až po předání hotového bytu.",
+    q: "Musíme být během realizace na místě?",
+    a: "Nemusíte. Většinu věcí zařídíme za vás a pravidelně vás budeme informovat o průběhu. Stačí nám zajistit přístup do bytu.",
   },
   {
-    q: "Zajišťujete stavební materiál?",
-    a: "Ano, dodávku veškerého materiálu zajišťujeme v rámci ceny na klíč. Máme prověřené dodavatele a dobré ceny. Pokud máte konkrétní přání na materiály nebo výrobce, rádi je zakomponujeme.",
+    q: "Jak probíhají platby?",
+    a: "Platby probíhají etapově podle postupu prací. Dohodneme se na férovém harmonogramu, který vám bude vyhovovat. Vše je detailně uvedeno ve smlouvě.",
   },
   {
-    q: `Co přesně zahrnuje rekonstrukce „na klíč"?`,
-    a: "Rekonstrukce na klíč zahrnuje vše od projektu a stavebního povolení (je-li třeba) přes realizaci všech řemesel až po závěrečný úklid a předání dokumentace. Výstupem je byt připravený k nastěhování — bez nutnosti cokoliv dalšího řešit.",
+    q: "Co když se během realizace rozhodneme něco změnit?",
+    a: "Je to možné. Změny řešíme pružně a vždy s vámi vše předem prokonzultujeme, abyste věděli, jaký bude dopad na cenu a termín.",
+  },
+  {
+    q: "Poskytujete záruku na provedené práce?",
+    a: "Ano, na všechny naše práce poskytujeme záruku 2 roky. Používáme kvalitní materiály a stojíme si za svou prací.",
+  },
+  {
+    q: "Působíte pouze v Praze, nebo i v okolí?",
+    a: "Naše hlavní působnost je Praha a okolí do 100 km. Ve vybraných případech realizujeme projekty i ve větší vzdálenosti – vždy po individuální domluvě.",
   },
 ];
 
@@ -113,10 +121,10 @@ export default function FAQ() {
             </a>
           </div>
 
-          {/* Right: accordion — no card wrapper, just clean list */}
+          {/* Right: accordion */}
           <div className="divide-y divide-border/50">
-            {faqs.map((faq) => (
-              <FAQItem key={faq.q} q={faq.q} a={faq.a} />
+            {faqs.map((faq, i) => (
+              <FAQItem key={i} q={faq.q} a={faq.a} />
             ))}
           </div>
         </div>

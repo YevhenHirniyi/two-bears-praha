@@ -1,31 +1,38 @@
 const steps = [
   {
     num: "01",
-    title: "Bezplatná prohlídka bytu",
+    title: "Nezávazná konzultace",
     description:
-      "Zavolejte nebo napište — domluvíme se na osobní návštěvě. Přijedeme přímo k vám, posoudíme stav bytu, prodiskutujeme váš záměr a odpovíme na vaše otázky. Konzultace i prohlídka jsou bezplatné.",
-    detail: "Zdarma, přijdeme k vám",
+      "Domluvíme si schůzku, poznáme vaše představy, poradíme s možnostmi a navrhneme nejlepší řešení.",
+    detail: "Bezplatně, přijdeme k vám",
   },
   {
     num: "02",
-    title: "Cenová nabídka a plán",
+    title: "Návrh a cenová nabídka",
     description:
-      "Do pěti pracovních dní dostanete přehlednou nabídku s pevnou cenou, harmonogramem prací a výčtem zahrnutých řemesel. Žádné skryté položky.",
+      "Připravíme přehledný návrh, rozsah prací a transparentní cenovou nabídku.",
     detail: "Do 5 pracovních dní",
   },
   {
     num: "03",
-    title: "Realizace na klíč",
+    title: "Realizace",
     description:
-      "Náš tým nastoupí v dohodnutý termín. Jeden projektový vedoucí koordinuje vše od bourání po dokončovací práce — nemusíte řešit organizaci řemeslníků.",
+      "Začínáme podle domluveného harmonogramu. Koordinujeme celý proces a dohlížíme na kvalitu každého detailu.",
     detail: "Jeden kontakt, celý průběh",
   },
   {
     num: "04",
-    title: "Předání hotového bytu",
+    title: "Průběžná komunikace",
     description:
-      "Projdeme spolu hotový byt, opravíme případné nedostatky, předáme veškerou dokumentaci. Poskytujeme záruku na odvedenou práci.",
-    detail: "Záruka na práci v ceně",
+      "Pravidelně vás informujeme o postupu prací, aby vše probíhalo bez překvapení.",
+    detail: "Vždy víte, co se děje",
+  },
+  {
+    num: "05",
+    title: "Předání a záruka",
+    description:
+      "Předáme hotový prostor a poskytujeme záruku 2 roky na provedené práce.",
+    detail: "Záruka 2 roky v ceně",
   },
 ];
 
@@ -40,33 +47,33 @@ export default function Process() {
         {/* Header */}
         <div className="mb-16 border-t border-border pt-10 md:mb-20">
           <p className="label-eyebrow mb-3 text-[0.6rem] text-muted-foreground">
-            Jak pracujeme
+            Jak probíhá spolupráce
           </p>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-lg text-4xl text-foreground md:text-5xl">
-              Čtyři kroky ke hotovému bytu
+              Jeden jasný proces.{" "}
+              <em className="font-light italic">Žádné starosti.</em>
             </h2>
             <p className="max-w-xs text-base text-muted-foreground">
-              Navrhli jsme postup tak, aby byl pro vás co nejjednodušší a
-              nejpředvídatelnější.
+              Postaráme se o celý průběh realizace tak, abyste vždy věděli, co se děje a co bude následovat.
             </p>
           </div>
         </div>
 
         {/* Steps — horizontal grid on desktop */}
-        <div className="mb-16 grid gap-10 md:grid-cols-4 md:gap-0">
+        <div className="mb-16 grid gap-10 md:grid-cols-5 md:gap-0">
           {steps.map((step, idx) => (
             <div
               key={step.num}
               className={`${
                 idx < steps.length - 1
-                  ? "md:border-r md:border-border md:pr-8 lg:pr-10"
+                  ? "md:border-r md:border-border md:pr-6 lg:pr-8"
                   : ""
-              } ${idx > 0 ? "md:pl-8 lg:pl-10" : ""}`}
+              } ${idx > 0 ? "md:pl-6 lg:pl-8" : ""}`}
             >
               {/* Large decorative number */}
               <div
-                className="mb-4 select-none font-display text-[4.5rem] leading-none text-border md:text-[5.5rem]"
+                className="mb-4 select-none font-display text-[4.5rem] leading-none text-border md:text-[5rem]"
                 aria-hidden="true"
               >
                 {step.num}
@@ -74,7 +81,7 @@ export default function Process() {
               <p className="label-eyebrow mb-2 text-[0.54rem] text-primary/65">
                 {step.detail}
               </p>
-              <h3 className="mb-3 text-xl text-foreground md:text-2xl">
+              <h3 className="mb-3 text-lg text-foreground md:text-xl">
                 {step.title}
               </h3>
               <p className="text-sm leading-relaxed text-muted-foreground">
