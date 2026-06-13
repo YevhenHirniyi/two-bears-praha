@@ -2,13 +2,11 @@ import Link from "next/link";
 import { Logo } from "@/components/Logo";
 
 const serviceLinks = [
-  "Kompletní rekonstrukce bytu",
-  "Rekonstrukce koupelny",
-  "Rekonstrukce kuchyně",
-  "Elektroinstalace",
-  "Voda, odpady, topení",
-  "Podlahy a obklady",
-  "Malování",
+  "Kompletní rekonstrukce na klíč",
+  "Fasády a venkovní úpravy",
+  "Terasy a venkovní stavby",
+  "Stavební práce a realizace",
+  "Kompletní servis od návrhu po realizaci",
 ];
 
 const quickLinks = [
@@ -41,8 +39,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="mb-7 max-w-xs font-body text-sm leading-relaxed text-background/50">
-              Rekonstrukce bytů v Praze na klíč. Odborný tým, pevná cena, jeden
-              kontakt od prvního měření po předání klíčů.
+              Rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí. Odborný tým, pevná cena, jeden kontakt od prvního měření po předání.
             </p>
             <div className="flex flex-col gap-2.5">
               <a

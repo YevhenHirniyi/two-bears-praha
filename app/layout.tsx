@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -18,15 +19,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Two Bears Renovation | Rekonstrukce bytů Praha na klíč",
+  title: "Two Bears Renovation | Rekonstrukce, fasády a terasy Praha",
   description:
-    "Kompletní rekonstrukce bytů v Praze na klíč — od návrhu až po předání hotového bytu. Pevná cena, ověření řemeslníci, jeden kontakt po celou dobu realizace.",
+    "Kompletní rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí do 100 km. Pevná cena, ověření řemeslníci, jeden kontakt od prvního měření po předání.",
   keywords:
-    "rekonstrukce bytu Praha, rekonstrukce koupelny Praha, rekonstrukce kuchyně Praha, bytová rekonstrukce na klíč, stavební firma Praha",
+    "rekonstrukce Praha, fasády Praha, terasy Praha, stavební firma Praha, kompletní rekonstrukce na klíč, rekonstrukce bytu Praha, stavební práce Praha",
   openGraph: {
-    title: "Two Bears Renovation | Rekonstrukce bytů Praha na klíč",
+    title: "Two Bears Renovation | Rekonstrukce, fasády a terasy Praha",
     description:
-      "Kompletní rekonstrukce bytů v Praze. Pevná cena, jeden kontakt, termín dodržíme.",
+      "Rekonstrukce, fasády, terasy a stavební realizace v Praze. Pevná cena, jeden kontakt, termín dodržíme.",
     type: "website",
     locale: "cs_CZ",
   },
@@ -35,7 +36,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="cs" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

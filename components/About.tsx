@@ -55,7 +55,7 @@ export default function About() {
           {/* Left: tall image */}
           <div className="relative min-h-[320px] md:min-h-[560px]">
             <Image
-              src="https://images.unsplash.com/photo-1631889993959-41b4e9c6e3c5?auto=format&fit=crop&w=1200&q=80"
+              src="/photos/praha-stodulky-a/1.jpeg"
               alt="Dokončený interiér po rekonstrukci — Two Bears Renovation"
               fill
               className="object-cover object-center"

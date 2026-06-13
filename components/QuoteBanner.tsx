@@ -26,8 +26,8 @@ export default function QuoteBanner() {
 
         <blockquote className="-mt-8 max-w-3xl text-center md:-mt-12">
           <p className="text-[clamp(1.5rem,4vw,3.25rem)] leading-snug text-primary-foreground md:leading-tight">
-            Přeměňujeme byty v domovy,{" "}
-            <em className="font-light italic">na které se těšíte.</em>
+            Proměňujeme prostory ve místa,{" "}
+            <em className="font-light italic">na která se těšíte.</em>
           </p>
         </blockquote>
 

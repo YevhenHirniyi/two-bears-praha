@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const filters = ["Vše", "Rekonstrukce", "Fasády", "Terasy", "Stavební práce"] as const;
+const filters = ["Vše", "Rekonstrukce"] as const;
 type Filter = (typeof filters)[number];
 
 const projects: {
@@ -17,84 +17,84 @@ const projects: {
     title: "Rekonstrukce bytu",
     location: "Praha 12",
     category: "Rekonstrukce",
-    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-12-a/${i + 1}.jpeg`),
+    images: [1, 2, 3, 4].map((i) => `/photos/praha-12-a/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Praha 12",
   },
   {
     title: "Rekonstrukce bytu 3+kk",
     location: "Praha 12",
     category: "Rekonstrukce",
-    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-12-b/${i + 1}.jpeg`),
+    images: [1, 2, 3, 4].map((i) => `/photos/praha-12-b/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu 3+kk Praha 12",
   },
   {
     title: "Kompletní rekonstrukce",
     location: "Praha 12",
     category: "Rekonstrukce",
-    images: Array.from({ length: 5 }, (_, i) => `/photos/praha-12-c/${i + 1}.jpeg`),
+    images: [1, 2, 4].map((i) => `/photos/praha-12-c/${i}.jpeg`),
     imageAlt: "Kompletní rekonstrukce bytu Praha 12",
   },
   {
     title: "Rekonstrukce bytu",
     location: "Praha 4",
     category: "Rekonstrukce",
-    images: Array.from({ length: 7 }, (_, i) => `/photos/praha-4/${i + 1}.jpeg`),
+    images: [1, 2, 4, 6].map((i) => `/photos/praha-4/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Praha 4",
   },
   {
     title: "Rekonstrukce bytu",
     location: "Praha 8, Střížkov",
     category: "Rekonstrukce",
-    images: Array.from({ length: 4 }, (_, i) => `/photos/praha-8-strizkov/${i + 1}.jpeg`),
+    images: [1, 2, 3, 4].map((i) => `/photos/praha-8-strizkov/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Praha 8 Střížkov",
   },
   {
     title: "Rekonstrukce bytu",
     location: "Praha, Stodůlky",
     category: "Rekonstrukce",
-    images: Array.from({ length: 10 }, (_, i) => `/photos/praha-stodulky-a/${i + 1}.jpeg`),
+    images: [1, 3, 6, 9].map((i) => `/photos/praha-stodulky-a/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Praha Stodůlky",
   },
   {
     title: "Kompletní rekonstrukce",
     location: "Praha, Stodůlky",
     category: "Rekonstrukce",
-    images: Array.from({ length: 9 }, (_, i) => `/photos/praha-stodulky-b/${i + 1}.jpeg`),
+    images: [1, 3, 6, 8].map((i) => `/photos/praha-stodulky-b/${i}.jpeg`),
     imageAlt: "Kompletní rekonstrukce bytu Praha Stodůlky",
   },
   {
     title: "Rekonstrukce bytu",
     location: "Měšice u Prahy",
     category: "Rekonstrukce",
-    images: Array.from({ length: 5 }, (_, i) => `/photos/mesice-u-prahy/${i + 1}.jpeg`),
+    images: [1, 2, 4].map((i) => `/photos/mesice-u-prahy/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Měšice u Prahy",
   },
   {
     title: "Rekonstrukce koupelny",
     location: "Měšice u Prahy",
     category: "Rekonstrukce",
-    images: Array.from({ length: 3 }, (_, i) => `/photos/mesice-koupelna/${i + 1}.jpeg`),
+    images: [1, 2, 3].map((i) => `/photos/mesice-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Měšice u Prahy",
   },
   {
     title: "Rekonstrukce koupelny",
     location: "Praha 8, Střížkov",
     category: "Rekonstrukce",
-    images: Array.from({ length: 4 }, (_, i) => `/photos/strizkov-koupelna/${i + 1}.jpeg`),
+    images: [1, 2, 4].map((i) => `/photos/strizkov-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Praha 8 Střížkov",
   },
   {
     title: "Rekonstrukce koupelny",
     location: "Praha, Stodůlky",
     category: "Rekonstrukce",
-    images: Array.from({ length: 3 }, (_, i) => `/photos/stodulky-koupelna/${i + 1}.jpeg`),
+    images: [1, 2, 3].map((i) => `/photos/stodulky-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Praha Stodůlky",
   },
   {
     title: "Rekonstrukce bytu",
     location: "Chomutov",
     category: "Rekonstrukce",
-    images: Array.from({ length: 8 }, (_, i) => `/photos/chomutov/${i + 1}.jpeg`),
+    images: [1, 3, 5, 7].map((i) => `/photos/chomutov/${i}.jpeg`),
     imageAlt: "Rekonstrukce bytu Chomutov",
   },
 ];
