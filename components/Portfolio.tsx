@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const filters = ["Vše", "Rekonstrukce"] as const;
+const filters = ["Vše", "Rekonstrukce", "Koupelny"] as const;
 type Filter = (typeof filters)[number];
 
 const projects: {
@@ -72,21 +72,21 @@ const projects: {
   {
     title: "Rekonstrukce koupelny",
     location: "Měšice u Prahy",
-    category: "Rekonstrukce",
+    category: "Koupelny",
     images: [1, 2, 3].map((i) => `/photos/mesice-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Měšice u Prahy",
   },
   {
     title: "Rekonstrukce koupelny",
     location: "Praha 8, Střížkov",
-    category: "Rekonstrukce",
+    category: "Koupelny",
     images: [1, 2, 4].map((i) => `/photos/strizkov-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Praha 8 Střížkov",
   },
   {
     title: "Rekonstrukce koupelny",
     location: "Praha, Stodůlky",
-    category: "Rekonstrukce",
+    category: "Koupelny",
     images: [1, 2, 3].map((i) => `/photos/stodulky-koupelna/${i}.jpeg`),
     imageAlt: "Rekonstrukce koupelny Praha Stodůlky",
   },
