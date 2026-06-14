@@ -1,22 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
-
-const serviceLinks = [
-  "Kompletní rekonstrukce na klíč",
-  "Fasády a venkovní úpravy",
-  "Terasy a venkovní stavby",
-  "Stavební práce a realizace",
-  "Kompletní servis od návrhu po realizaci",
-];
-
-const quickLinks = [
-  { label: "Domů", href: "/" },
-  { label: "Realizace", href: "#realizace" },
-  { label: "Postup prací", href: "#postup" },
-  { label: "O nás", href: "#o-nas" },
-  { label: "Časté dotazy", href: "#faq" },
-  { label: "Kontakt", href: "#kontakt" },
-];
+import { useLang } from "@/lib/LangContext";
 
 const areas = [
   "Vinohrady", "Žižkov", "Holešovice", "Smíchov", "Nusle",
@@ -24,6 +10,9 @@ const areas = [
 ];
 
 export default function Footer() {
+  const { t } = useLang();
+  const f = t.footer;
+
   return (
     <footer id="site-footer" className="bg-foreground text-background/65 pb-16 md:pb-0" role="contentinfo">
       {/* Thin warm accent line */}
@@ -39,7 +28,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="mb-7 max-w-xs font-body text-sm leading-relaxed text-background/50">
-              Rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí. Odborný tým, pevná cena, jeden kontakt od prvního měření po předání.
+              {f.tagline}
             </p>
             <div className="flex flex-col gap-2.5">
               <a
@@ -69,10 +58,10 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="label-eyebrow mb-5 text-[0.57rem] text-background/35">
-              Služby
+              {f.servicesHeading}
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {serviceLinks.map((s) => (
+              {f.serviceLinks.map((s) => (
                 <li key={s}>
                   <a
                     href="#sluzby"
@@ -89,10 +78,10 @@ export default function Footer() {
           <div className="flex flex-col gap-10">
             <div>
               <h4 className="label-eyebrow mb-5 text-[0.57rem] text-background/35">
-                Rychlé odkazy
+                {f.quickLinksHeading}
               </h4>
               <ul className="flex flex-col gap-2.5">
-                {quickLinks.map((l) => (
+                {f.quickLinks.map((l) => (
                   <li key={l.label}>
                     <a
                       href={l.href}
@@ -107,7 +96,7 @@ export default function Footer() {
 
             <div>
               <h4 className="label-eyebrow mb-4 text-[0.57rem] text-background/35">
-                Kde pracujeme
+                {f.areasHeading}
               </h4>
               <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
                 {areas.map((a) => (
@@ -116,7 +105,7 @@ export default function Footer() {
                   </li>
                 ))}
                 <li>
-                  <span className="font-body text-xs text-background/30">+ celá Praha</span>
+                  <span className="font-body text-xs text-background/30">{f.plusMore}</span>
                 </li>
               </ul>
             </div>
@@ -129,14 +118,14 @@ export default function Footer() {
         <div className="container-max section-px py-5">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p className="font-body text-xs text-background/28">
-              © {new Date().getFullYear()} Two Bears Renovation s.r.o. Všechna práva vyhrazena.
+              {f.copyright}
             </p>
             <div className="flex gap-5">
               <a href="/ochrana-osobnich-udaju" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
-                Ochrana osobních údajů
+                {f.privacy}
               </a>
               <a href="/obchodni-podminky" className="font-body text-xs text-background/28 transition-colors hover:text-background/55">
-                Obchodní podmínky
+                {f.terms}
               </a>
             </div>
           </div>

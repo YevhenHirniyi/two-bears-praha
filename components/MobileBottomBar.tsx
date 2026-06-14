@@ -1,10 +1,17 @@
+"use client";
+
+import { useLang } from "@/lib/LangContext";
+
 export default function MobileBottomBar() {
+  const { t } = useLang();
+  const mb = t.mobileBar;
+
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-border bg-background shadow-[0_-6px_20px_-10px_rgba(0,0,0,0.12)] md:hidden">
       <a
         href="tel:+420776219323"
         className="label-eyebrow flex items-center justify-center gap-2 py-4 text-[0.66rem] text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground"
-        aria-label="Zavolat nám"
+        aria-label={mb.callAria}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +32,7 @@ export default function MobileBottomBar() {
         href="#kontakt"
         className="label-eyebrow flex items-center justify-center gap-2 bg-foreground py-4 text-[0.66rem] text-background transition-opacity hover:opacity-85"
       >
-        Domluvit konzultaci
+        {mb.cta}
       </a>
     </div>
   );

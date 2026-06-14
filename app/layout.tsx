@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { LangProvider } from "@/lib/LangContext";
 import CookieBanner from "@/components/CookieBanner";
 import "./globals.css";
 
@@ -37,8 +38,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="cs" className={`${cormorant.variable} ${dmSans.variable}`}>
       <body>
-        {children}
-        <CookieBanner />
+        <LangProvider>
+          {children}
+          <CookieBanner />
+        </LangProvider>
       </body>
     </html>
   );

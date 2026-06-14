@@ -1,72 +1,41 @@
-const steps = [
-  {
-    num: "01",
-    title: "Nezávazná konzultace",
-    description:
-      "Domluvíme si schůzku, poznáme vaše představy, poradíme s možnostmi a navrhneme nejlepší řešení.",
-    detail: "Bezplatně, přijdeme k vám",
-  },
-  {
-    num: "02",
-    title: "Návrh a cenová nabídka",
-    description:
-      "Připravíme přehledný návrh, rozsah prací a transparentní cenovou nabídku.",
-    detail: "Do 5 pracovních dní",
-  },
-  {
-    num: "03",
-    title: "Realizace",
-    description:
-      "Začínáme podle domluveného harmonogramu. Koordinujeme celý proces a dohlížíme na kvalitu každého detailu.",
-    detail: "Jeden kontakt, celý průběh",
-  },
-  {
-    num: "04",
-    title: "Průběžná komunikace",
-    description:
-      "Pravidelně vás informujeme o postupu prací, aby vše probíhalo bez překvapení.",
-    detail: "Vždy víte, co se děje",
-  },
-  {
-    num: "05",
-    title: "Předání a záruka",
-    description:
-      "Předáme hotový prostor a poskytujeme záruku 2 roky na provedené práce.",
-    detail: "Záruka 2 roky v ceně",
-  },
-];
+"use client";
+
+import { useLang } from "@/lib/LangContext";
 
 export default function Process() {
+  const { t } = useLang();
+  const p = t.process;
+
   return (
     <section
       id="postup"
       className="bg-background py-16 md:py-28"
-      aria-label="Jak pracujeme"
+      aria-label={p.aria}
     >
       <div className="container-max section-px">
         {/* Header */}
         <div className="mb-16 border-t border-border pt-10 md:mb-20">
           <p className="label-eyebrow mb-3 text-[0.6rem] text-muted-foreground">
-            Jak probíhá spolupráce
+            {p.eyebrow}
           </p>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <h2 className="max-w-lg text-4xl text-foreground md:text-5xl">
-              Jeden jasný proces.{" "}
-              <em className="font-light italic">Žádné starosti.</em>
+              {p.heading}{" "}
+              <em className="font-light italic">{p.headingEm}</em>
             </h2>
             <p className="max-w-xs text-base text-muted-foreground">
-              Postaráme se o celý průběh realizace tak, abyste vždy věděli, co se děje a co bude následovat.
+              {p.subtext}
             </p>
           </div>
         </div>
 
         {/* Steps — horizontal grid on desktop */}
         <div className="mb-16 grid gap-10 md:grid-cols-5 md:gap-0">
-          {steps.map((step, idx) => (
+          {p.steps.map((step, idx) => (
             <div
-              key={step.num}
+              key={idx}
               className={`${
-                idx < steps.length - 1
+                idx < p.steps.length - 1
                   ? "md:border-r md:border-border md:pr-6 lg:pr-8"
                   : ""
               } ${idx > 0 ? "md:pl-6 lg:pl-8" : ""}`}
@@ -76,7 +45,7 @@ export default function Process() {
                 className="mb-4 select-none font-display text-[4.5rem] leading-none text-border md:text-[5rem]"
                 aria-hidden="true"
               >
-                {step.num}
+                {String(idx + 1).padStart(2, "0")}
               </div>
               <p className="label-eyebrow mb-2 text-[0.54rem] text-primary/65">
                 {step.detail}
@@ -97,7 +66,7 @@ export default function Process() {
             href="#kontakt"
             className="label-eyebrow inline-flex items-center justify-center rounded-full bg-primary px-8 py-3.5 text-[0.68rem] text-primary-foreground transition-colors hover:bg-primary/85"
           >
-            Domluvit bezplatnou konzultaci
+            {p.ctaPrimary}
           </a>
           <a
             href="tel:+420776219323"

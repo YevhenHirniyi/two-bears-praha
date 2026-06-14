@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Script from "next/script";
+import { useLang } from "@/lib/LangContext";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function CookieBanner() {
+  const { t } = useLang();
+  const ck = t.cookie;
   const [consent, setConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -50,12 +53,12 @@ export default function CookieBanner() {
         >
           <div className="container-max section-px flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-xl font-body text-sm leading-relaxed text-background/65">
-              Tento web používá soubory cookie ke zlepšení vašeho zážitku a analýze návštěvnosti.{" "}
+              {ck.text}{" "}
               <a
                 href="/ochrana-osobnich-udaju"
                 className="text-background/80 underline underline-offset-2 transition-colors hover:text-background"
               >
-                Zjistit více
+                {ck.learnMore}
               </a>
             </p>
             <div className="flex shrink-0 gap-3">
@@ -63,13 +66,13 @@ export default function CookieBanner() {
                 onClick={reject}
                 className="label-eyebrow border border-background/20 px-5 py-2.5 text-[0.65rem] text-background/55 transition-colors hover:border-background/40 hover:text-background/80"
               >
-                Odmítnout
+                {ck.reject}
               </button>
               <button
                 onClick={accept}
                 className="label-eyebrow bg-primary px-6 py-2.5 text-[0.65rem] text-primary-foreground transition-colors hover:bg-primary/85"
               >
-                Přijmout vše
+                {ck.accept}
               </button>
             </div>
           </div>

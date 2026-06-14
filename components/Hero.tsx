@@ -1,17 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { useLang } from "@/lib/LangContext";
 
 export default function Hero() {
+  const { t } = useLang();
+  const h = t.hero;
+
   return (
     <section
       className="relative w-full overflow-hidden bg-foreground"
       style={{ height: "100svh" }}
-      aria-label="Úvod"
+      aria-label={h.aria}
     >
       <Image
         src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=85"
-        alt="Luxusní rekonstrukce bytu Praha – moderní interiér po rekonstrukci"
+        alt={h.imgAlt}
         fill
         priority
         className="object-cover object-center"
@@ -30,22 +34,22 @@ export default function Hero() {
           <div className="mb-6 flex items-center gap-4">
             <div className="h-px w-10 shrink-0 bg-primary-foreground/35" aria-hidden="true" />
             <p className="label-eyebrow text-[0.58rem] tracking-[0.16em] text-primary-foreground/50">
-              Komplexní rekonstrukce | Praha a okolí
+              {h.eyebrow}
             </p>
           </div>
 
           <h1 className="mb-6 text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.88] tracking-tight text-primary-foreground">
-            Proměníme vaše představy{" "}
-            <em className="font-light italic">ve skutečnost.</em>
+            {h.heading}{" "}
+            <em className="font-light italic">{h.headingEm}</em>
           </h1>
 
           <div className="mb-9 max-w-md space-y-2">
             <p className="text-base leading-relaxed text-primary-foreground/75">
-              Kompletní realizace na klíč. Od prvního návrhu až po finální předání.
+              {h.p1}
             </p>
             <p className="text-base leading-relaxed text-primary-foreground/75">
-              Postaráme se o celý proces tak, aby výsledek odpovídal vašim představám – kvalitně, profesionálně a se{" "}
-              <span className="text-primary">zárukou 2 roky</span>.
+              {h.p2start}{" "}
+              <span className="text-primary">{h.guarantee}</span>.
             </p>
           </div>
 
@@ -54,14 +58,14 @@ export default function Hero() {
               href="#kontakt"
               className="label-eyebrow inline-flex items-center justify-center border border-primary-foreground/50 px-8 py-3.5 text-[0.68rem] text-primary-foreground backdrop-blur-sm transition-all duration-300 hover:bg-primary-foreground hover:text-foreground"
             >
-              Nezávazná konzultace zdarma
+              {h.ctaPrimary}
             </a>
             <a
               href="#realizace"
               className="label-eyebrow group inline-flex items-center gap-2 py-1.5 text-[0.68rem] text-primary-foreground/55 transition-colors hover:text-primary-foreground"
             >
               <span className="border-b border-primary-foreground/25 pb-0.5 transition-colors group-hover:border-primary-foreground/55">
-                Naše realizace
+                {h.ctaSecondary}
               </span>
               <svg
                 viewBox="0 0 24 24"
@@ -90,7 +94,7 @@ export default function Hero() {
           className="label-eyebrow text-[0.44rem] text-primary-foreground"
           style={{ writingMode: "vertical-rl", letterSpacing: "0.2em" }}
         >
-          Praha a okolí · Rekonstrukce a realizace
+          {h.sideLabel}
         </span>
         <div className="h-16 w-px bg-primary-foreground" />
       </div>

@@ -4,19 +4,21 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
-
-const navLinks = [
-  { label: "O nás", href: "#o-nas" },
-  { label: "Služby", href: "#sluzby" },
-  { label: "Realizace", href: "#realizace" },
-  { label: "Proces", href: "#postup" },
-  { label: "Kontakty", href: "#kontakt" },
-];
+import { useLang } from "@/lib/LangContext";
 
 export default function Navbar() {
+  const { t, lang, setLang } = useLang();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navLinks = [
+    { label: t.nav.about, href: "#o-nas" },
+    { label: t.nav.services, href: "#sluzby" },
+    { label: t.nav.portfolio, href: "#realizace" },
+    { label: t.nav.process, href: "#postup" },
+    { label: t.nav.contact, href: "#kontakt" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -53,7 +55,7 @@ export default function Navbar() {
             <Link
               href="/"
               className="shrink-0 opacity-100 transition-opacity hover:opacity-70"
-              aria-label="Two Bears Renovation – domovská stránka"
+              aria-label={t.nav.ariaHome}
               onClick={handleLogoClick}
             >
               <Logo light={true} />
@@ -62,67 +64,75 @@ export default function Navbar() {
             {/* Nav links — desktop */}
             <nav
               className="hidden items-center gap-6 md:flex lg:gap-8"
-              aria-label="Hlavní navigace"
+              aria-label={t.nav.ariaMain}
             >
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`label-eyebrow text-[0.62rem] transition-colors duration-500 ${
-                    "text-primary-foreground/60 hover:text-primary-foreground"
-                  }`}
+                  className="label-eyebrow text-[0.62rem] text-primary-foreground/60 transition-colors duration-500 hover:text-primary-foreground"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            {/* Right: phone + CTA — desktop */}
+            {/* Right: lang toggle + phone + CTA — desktop */}
             <div className="hidden items-center gap-4 md:flex lg:gap-5">
+              <button
+                onClick={() => setLang(lang === "cs" ? "en" : "cs")}
+                className="label-eyebrow text-[0.6rem] text-primary-foreground/50 transition-colors hover:text-primary-foreground"
+                aria-label={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
+              >
+                {t.langToggle}
+              </button>
               <a
                 href="tel:+420776219323"
-                className={`label-eyebrow flex items-center gap-1.5 text-[0.6rem] transition-colors duration-500 ${
-                  "text-primary-foreground/65 hover:text-primary-foreground"
-                }`}
+                className="label-eyebrow flex items-center gap-1.5 text-[0.6rem] text-primary-foreground/65 transition-colors duration-500 hover:text-primary-foreground"
               >
                 <PhoneIcon />
                 +420 776 219 323
               </a>
               <a
                 href="#kontakt"
-                className={`label-eyebrow inline-flex items-center rounded-full px-6 py-2.5 text-[0.62rem] transition-colors duration-300 ${
-                  "bg-primary-foreground/90 text-foreground hover:bg-primary-foreground"
-                }`}
+                className="label-eyebrow inline-flex items-center rounded-full bg-primary-foreground/90 px-6 py-2.5 text-[0.62rem] text-foreground transition-colors duration-300 hover:bg-primary-foreground"
               >
-                Domluvit konzultaci
+                {t.nav.cta}
               </a>
             </div>
 
-            {/* Mobile: burger button */}
-            <button
-              className={`flex h-8 w-8 flex-col items-center justify-center gap-[5px] transition-colors duration-500 md:hidden ${
-                "text-primary-foreground"
-              }`}
-              aria-label={menuOpen ? "Zavřít menu" : "Otevřít menu"}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((v) => !v)}
-            >
-              <span
-                className={`block h-px w-3.5 origin-center bg-current transition-transform duration-300 ${
-                  menuOpen ? "translate-y-[4.5px] rotate-45" : ""
-                }`}
-              />
-              <span
-                className={`block h-px w-3.5 bg-current transition-opacity duration-300 ${
-                  menuOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block h-px w-3.5 origin-center bg-current transition-transform duration-300 ${
-                  menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
-                }`}
-              />
-            </button>
+            {/* Mobile: lang toggle + burger */}
+            <div className="flex items-center gap-3 md:hidden">
+              <button
+                onClick={() => setLang(lang === "cs" ? "en" : "cs")}
+                className="label-eyebrow text-[0.6rem] text-primary-foreground/60 transition-colors hover:text-primary-foreground"
+                aria-label={lang === "cs" ? "Switch to English" : "Přepnout do češtiny"}
+              >
+                {t.langToggle}
+              </button>
+              <button
+                className="flex h-8 w-8 flex-col items-center justify-center gap-[5px] text-primary-foreground transition-colors duration-500"
+                aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((v) => !v)}
+              >
+                <span
+                  className={`block h-px w-3.5 origin-center bg-current transition-transform duration-300 ${
+                    menuOpen ? "translate-y-[4.5px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-px w-3.5 bg-current transition-opacity duration-300 ${
+                    menuOpen ? "opacity-0" : ""
+                  }`}
+                />
+                <span
+                  className={`block h-px w-3.5 origin-center bg-current transition-transform duration-300 ${
+                    menuOpen ? "-translate-y-[4.5px] -rotate-45" : ""
+                  }`}
+                />
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -135,7 +145,7 @@ export default function Navbar() {
         aria-hidden={!menuOpen}
       >
         <div className="flex flex-1 flex-col justify-center px-8 pb-32">
-          <nav aria-label="Mobilní navigace">
+          <nav aria-label={t.nav.ariaMobile}>
             <ul className="flex flex-col gap-1">
               {navLinks.map((link, i) => (
                 <li key={link.href}>
@@ -155,7 +165,6 @@ export default function Navbar() {
               ))}
             </ul>
           </nav>
-
         </div>
       </div>
     </>
