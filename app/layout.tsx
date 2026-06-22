@@ -21,17 +21,31 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.twobearsrenovation.cz"),
   title: "Two Bears Renovation | Rekonstrukce, fasády a terasy Praha",
   description:
     "Kompletní rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí do 100 km. Pevná cena, ověření řemeslníci, jeden kontakt od prvního měření po předání.",
   keywords:
     "rekonstrukce Praha, fasády Praha, terasy Praha, stavební firma Praha, kompletní rekonstrukce na klíč, rekonstrukce bytu Praha, stavební práce Praha",
+  alternates: {
+    canonical: "https://www.twobearsrenovation.cz",
+  },
   openGraph: {
     title: "Two Bears Renovation | Rekonstrukce, fasády a terasy Praha",
     description:
       "Rekonstrukce, fasády, terasy a stavební realizace v Praze. Pevná cena, jeden kontakt, termín dodržíme.",
     type: "website",
     locale: "cs_CZ",
+    url: "https://www.twobearsrenovation.cz",
+    siteName: "Two Bears Renovation",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
