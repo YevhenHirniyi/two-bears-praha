@@ -38,6 +38,21 @@ export const metadata: Metadata = {
     locale: "cs_CZ",
     url: "https://www.twobearsrenovation.cz",
     siteName: "Two Bears Renovation",
+    images: [
+      {
+        url: "/photos/praha-stodulky-a/1.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Two Bears Renovation – rekonstrukce Praha",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Two Bears Renovation | Rekonstrukce, fasády a terasy Praha",
+    description:
+      "Rekonstrukce, fasády, terasy a stavební realizace v Praze. Pevná cena, jeden kontakt, termín dodržíme.",
+    images: ["/photos/praha-stodulky-a/1.jpeg"],
   },
   robots: {
     index: true,

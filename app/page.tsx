@@ -15,28 +15,64 @@ import MobileBottomBar from "@/components/MobileBottomBar";
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Two Bears Renovation",
-  url: "https://www.twobearsrenovation.cz",
-  telephone: "+420776219323",
-  email: "info@twobearsrenovation.cz",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Praha",
-    addressCountry: "CZ",
-  },
-  areaServed: {
-    "@type": "GeoCircle",
-    geoMidpoint: {
-      "@type": "GeoCoordinates",
-      latitude: 50.0755,
-      longitude: 14.4378,
+  "@graph": [
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://www.twobearsrenovation.cz/#business",
+      name: "Two Bears Renovation s.r.o.",
+      url: "https://www.twobearsrenovation.cz",
+      telephone: "+420776219323",
+      email: "info@twobearsrenovation.cz",
+      identifier: "23684038",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mokropeská č.ev. 574",
+        addressLocality: "Černošice",
+        postalCode: "252 28",
+        addressCountry: "CZ",
+      },
+      areaServed: {
+        "@type": "GeoCircle",
+        geoMidpoint: {
+          "@type": "GeoCoordinates",
+          latitude: 50.0755,
+          longitude: 14.4378,
+        },
+        geoRadius: "100000",
+      },
+      description:
+        "Kompletní rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí do 100 km.",
+      priceRange: "$$",
+      image: "https://www.twobearsrenovation.cz/photos/praha-stodulky-a/1.jpeg",
     },
-    geoRadius: "100000",
-  },
-  description:
-    "Kompletní rekonstrukce, fasády, terasy a stavební realizace v Praze a okolí do 100 km.",
-  priceRange: "$$",
+    {
+      "@type": "Organization",
+      "@id": "https://www.twobearsrenovation.cz/#organization",
+      name: "Two Bears Renovation s.r.o.",
+      url: "https://www.twobearsrenovation.cz",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.twobearsrenovation.cz/logo-dark.svg",
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+420776219323",
+        email: "info@twobearsrenovation.cz",
+        contactType: "customer service",
+        areaServed: "CZ",
+        availableLanguage: ["Czech", "Ukrainian", "English"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.twobearsrenovation.cz/#website",
+      name: "Two Bears Renovation",
+      url: "https://www.twobearsrenovation.cz",
+      publisher: {
+        "@id": "https://www.twobearsrenovation.cz/#organization",
+      },
+    },
+  ],
 };
 
 export default function HomePage() {
